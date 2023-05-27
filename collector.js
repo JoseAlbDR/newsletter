@@ -50,7 +50,7 @@ app.post("/", (req, res) => {
         },
       ],
     });
-    console.log(response.errors);
+    console.log(response);
     if (response.error_count === 0) {
       res.sendFile(__dirname + "/success.html");
     } else {
@@ -72,6 +72,10 @@ app.post("/", (req, res) => {
   // request.write(jsonData);
   // request.end();
 });
+
+app.post("/success", (req, res) => res.redirect("/"));
+
+app.post("/error", (req, res) => res.redirect("/"));
 
 app.use(express.static(__dirname + "/"));
 
