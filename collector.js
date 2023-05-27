@@ -9,6 +9,8 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => res.sendFile(__dirname + "/index.html"));
+// app.get("/"), (req, res) => res.sendFile(__dirname * "/success.html");
+// app.get("/"), (req, res) => res.sendFile(__dirname * "/error.html");
 
 app.post("/", (req, res) => {
   console.log(req.body);
@@ -48,7 +50,12 @@ app.post("/", (req, res) => {
         },
       ],
     });
-    console.log(response);
+    console.log(response.errors);
+    if (response.error_count === 0) {
+      res.sendFile(__dirname + "/success.html");
+    } else {
+      res.sendFile(__dirname + "/error.html");
+    }
   };
 
   run();
