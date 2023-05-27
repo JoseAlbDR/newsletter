@@ -15,15 +15,15 @@
   <body>
     <div class="container">
       <main class="form-signin w-100 m-auto">
-        <form action="/" method="post">
+        <form class="text-center" action="/" method="post">
           <img
-            class="img-thumbnail mb-5"
-            src="./logo.png"
+            class="mb-4"
+            src="./logo-no-background.png"
             alt=""
-            width="72"
-            height="57"
+            width="100"
+            height="72"
           />
-          <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+          <h1 class="h3 mb-3 fw-normal">Subscribe to My Newsletter</h1>
           <div class="form-floating">
             <input
               type="text"
@@ -31,7 +31,8 @@
               class="form-control"
               id="floatingPassword"
               placeholder="Enter your name:"
-              focus="autofocus"
+              autofocus
+              required
             />
             <label for="floatingPassword">Name</label>
           </div>
@@ -42,6 +43,7 @@
               class="form-control"
               id="floatingInput"
               placeholder="name@example.com"
+              required
             />
             <label for="floatingInput">Email address</label>
           </div>
@@ -51,7 +53,7 @@
             </label>
           </div>
           <button class="w-100 btn btn-lg btn-primary">Sign in</button>
-          <p class="mt-5 mb-3 text-body-secondary">© 2017–2023</p>
+          <p class="mt-5 mb-3 text-body-secondary">© J.Alberto 2023</p>
         </form>
       </main>
     </div>
