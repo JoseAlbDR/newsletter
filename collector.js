@@ -36,7 +36,7 @@ app.post("/", (req, res) => {
 
   client.setConfig({
     apiKey: API_KEY,
-    server: "us8",
+    server: PREFIX,
   });
 
   const run = async () => {
