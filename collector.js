@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const request = require("request");
 const api = require("./private/api");
+// const script = require("./script");
 const https = require("https");
 const client = require("@mailchimp/mailchimp_marketing");
 
@@ -55,6 +56,7 @@ app.post("/", (req, res) => {
       res.sendFile(__dirname + "/success.html");
     } else {
       res.sendFile(__dirname + "/error.html");
+      // script.showError(response.errors[0].error_code);
     }
   };
 
