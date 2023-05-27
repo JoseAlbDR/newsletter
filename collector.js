@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const request = require("request");
-const api = require("./private/api");
+const config = require("./private/config");
 // const script = require("./script");
 const https = require("https");
 const client = require("@mailchimp/mailchimp_marketing");
@@ -15,10 +15,11 @@ app.get("/", (req, res) => res.sendFile(__dirname + "/index.html"));
 
 app.post("/", (req, res) => {
   console.log(req.body);
-  const LIST_ID = api.AUDIENCE_ID;
-  const API_KEY = api.API_KEY; // Your mailchimp API_KEY goes here
+  const LIST_ID = config.AUDIENCE_ID; // Your mailchimp LIST_ID goes here
+  const API_KEY = config.API_KEY; // Your mailchimp API_KEY goes here
+  const PREFIX = config.PREFIX; // Your server code goes here (last 3 chars of your API_KEY)
   const { name, lastName, email } = req.body;
-  const url = `https://us8.api.mailchimp.com/3.0/lists/${LIST_ID}`;
+  const url = `https://${PREFIX}.api.mailchimp.com/3.0/lists/${LIST_ID}`;
   const options = { method: "POST", auth: `yusep:${API_KEY}` };
   const data = {
     members: [
