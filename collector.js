@@ -8,8 +8,9 @@ const client = require("@mailchimp/mailchimp_marketing");
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
+app.set("view engine", "ejs");
 
-app.get("/", (req, res) => res.sendFile(__dirname + "/index.html"));
+app.get("/", (req, res) => res.render("index"));
 // app.get("/"), (req, res) => res.sendFile(__dirname * "/success.html");
 // app.get("/"), (req, res) => res.sendFile(__dirname * "/error.html");
 
@@ -54,9 +55,9 @@ app.post("/", (req, res) => {
     });
     console.log(response);
     if (response.error_count === 0) {
-      res.sendFile(__dirname + "/success.html");
+      res.render("success");
     } else {
-      res.sendFile(__dirname + "/error.html");
+      res.render("error", { error: response.errors[0].error_code });
       // script.showError(response.errors[0].error_code);
     }
   };
@@ -81,5 +82,5 @@ app.post("/success", (req, res) => res.redirect("/"));
 app.post("/error", (req, res) => res.redirect("/"));
 
 app.use(express.static(__dirname + "/"));
-
-app.listen(3000, () => console.log("Server started on port: 3000"));
+const port = 3001;
+app.listen(port, () => console.log(`Server started on port:${port} `));
