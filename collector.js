@@ -57,7 +57,7 @@ app.post("/", (req, res) => {
     if (response.error_count === 0) {
       res.render("success");
     } else {
-      res.render("error", { error: response.errors[0].error_code });
+      res.render("error", { error: response.errors[0].error.split(",")[0] });
       // script.showError(response.errors[0].error_code);
     }
   };
